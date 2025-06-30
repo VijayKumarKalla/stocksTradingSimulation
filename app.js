@@ -26,7 +26,7 @@ const startServer = async () => {
 
   cron.schedule('*/5 * * * *', () => updateStockPrices(db));
 
-  app.listen(3000, () => console.log('Server running at http://localhost:3000'));
+  app.listen(3000, () => console.log('Server running at http://localhost:3000/api-docs'));
 };
 
 startServer();
