@@ -1,0 +1,152 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Stock Trading Simulation API",
+    "version": "1.0.0",
+    "description": "Simulated stock trading APIs with loan, buy/sell, analytics, and performance reports."
+  },
+  "paths": {
+    "/users/loan": {
+      "post": {
+        "summary": "Allow users to take a loan (limit: ₹100000)",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": { "type": "integer" },
+                  "amount": { "type": "number" }
+                },
+                "required": ["userId", "amount"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Loan granted" },
+          "400": { "description": "Loan limit exceeded" },
+          "500": { "description": "Loan processing failed" }
+        }
+      }
+    },
+    "/users/buy": {
+      "post": {
+        "summary": "Buy stocks",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": { "type": "integer" },
+                  "stockId": { "type": "integer" },
+                  "quantity": { "type": "integer" }
+                },
+                "required": ["userId", "stockId", "quantity"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Stock purchased" },
+          "400": { "description": "Insufficient stock or balance" },
+          "500": { "description": "Purchase failed" }
+        }
+      }
+    },
+    "/users/sell": {
+      "post": {
+        "summary": "Sell owned stocks",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": { "type": "integer" },
+                  "stockId": { "type": "integer" },
+                  "quantity": { "type": "integer" }
+                },
+                "required": ["userId", "stockId", "quantity"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Stock sold" },
+          "400": { "description": "Insufficient stock to sell" },
+          "500": { "description": "Sell failed" }
+        }
+      }
+    },
+    "/users/top": {
+      "get": {
+        "summary": "List top-performing users by net worth",
+        "responses": {
+          "200": { "description": "Top users retrieved" }
+        }
+      }
+    },
+    "/users/report": {
+      "get": {
+        "summary": "Generate user profit/loss report",
+        "responses": {
+          "200": { "description": "Report of each user’s balance, stock value, loan, and net worth" }
+        }
+      }
+    },
+    "/stocks/register": {
+      "post": {
+        "summary": "Register a new stock",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "availableQuantity": { "type": "integer" },
+                  "price": { "type": "number" }
+                },
+                "required": ["name", "availableQuantity", "price"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Stock registered" },
+          "500": { "description": "Failed to register stock" }
+        }
+      }
+    },
+    "/stocks/report": {
+      "get": {
+        "summary": "Stock-wise performance report",
+        "responses": {
+          "200": { "description": "Report of average stock prices and available quantity" }
+        }
+      }
+    },
+    "/stocks/history": {
+      "get": {
+        "summary": "Stock price history",
+        "responses": {
+          "200": { "description": "Historical prices of stocks" }
+        }
+      }
+    },
+    "/analytics/stocks/top": {
+      "get": {
+        "summary": "Top-performing stocks (by average price)",
+        "responses": {
+          "200": { "description": "List of stocks sorted by average price" }
+        }
+      }
+    }
+  }
+}

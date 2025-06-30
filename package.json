@@ -1,0 +1,26 @@
+{
+  "name": "stockapp",
+  "version": "1.0.0",
+  "description": "stockApp",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VijayKumarKalla/stocksTradingSimulation.git"
+  },
+  "author": "VijayKalla",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VijayKumarKalla/stocksTradingSimulation/issues"
+  },
+  "homepage": "https://github.com/VijayKumarKalla/stocksTradingSimulation#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "node-cron": "^4.1.1",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7",
+    "swagger-ui-express": "^5.0.1"
+  }
+}
